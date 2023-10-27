@@ -10,17 +10,19 @@ public class Oddmanout {
             HashMap<Integer, Boolean> hMap = new HashMap<>(); 
             int[] intArr = new int[numOfGuests]; 
             for (int j = 0; j < intArr.length; j++) {
+                intArr[j] = sc.nextInt(); 
                 if (!hMap.containsKey(j)) {
-                    hMap.put(j, false); 
+                    hMap.put(intArr[j], false); 
                 } else {
-                    hMap.put(j, !hMap.get(j)); 
+                    hMap.put(intArr[j], !hMap.get(intArr[j])); 
                 }
             }
-            hMap.forEach((key, value) -> {
-                if (hMap.get(key) == true){
-                    System.out.println("Case #" + (i+1) + " " + key);
+            int val = i+1; 
+            for (int j = 0; j < intArr.length; j++) {
+                if (hMap.get(intArr[j]) == false){
+                    System.out.println("Case #" + val +": " + intArr[j]);
                 }
-            });
+            }
         }
         sc.close();
     }

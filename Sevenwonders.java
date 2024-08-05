@@ -30,5 +30,6 @@ public class Sevenwonders {
             return a;
         }
         return b;
+
     }
 }

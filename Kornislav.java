@@ -11,5 +11,6 @@ public class Kornislav {
         Arrays.sort(intArr);
         System.out.println(intArr[0] * intArr[2]);
         
+        
     }
 }

@@ -1,46 +1,87 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class DRMmessages {
     public static void main(String[] args) {
-        HashMap<String, Integer> hMap = new HashMap<>();
-        for (int i = 0; i < 26; i++) {
-            hMap.put("" + (char) ('A' + i), i);
-        }
-        System.out.println(hMap);
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        String in1 = input.substring(0, input.length() / 2);
-        String in2 = input.substring(input.length() / 2, input.length());
-        int val1 = 0;
-        int val2 = 0;
+        char[] inputArr0 = (input.substring(0, input.length() / 2)).toCharArray();
+        char[] inputArr1 = (input.substring(input.length() / 2, input.length())).toCharArray();
 
-        for (int i = 0; i < in1.length(); i++) {
-            val1 += hMap.get("" + in1.charAt(i));
-            val2 += hMap.get("" + in2.charAt(i));
+        int toMove0 = 0;
+        for (char c : inputArr0) {
+            toMove0 += c - 65;
         }
+        toMove0 %= 26;
 
-        String newIn1 = "";
-        for (char c : in1.toCharArray()) {
-            System.out.println((c));
+        int toMove1 = 0;
+        for (char c : inputArr1) {
+            toMove1 += c - 65;
+        }
+        toMove1 %= 26;
 
-            if (c + val1 > 'Z') {
-                newIn1 += (char) ((c + val1) - 26);
-            } else {
-                newIn1 += (char) (c + val1);
+        StringBuilder finalString0 = new StringBuilder(2000);
+        char buffer;
+
+        for (char c : inputArr0) {
+            buffer = c;
+
+            // while(f < toMove0){
+            // if ('Z' - buffer > toMove0){
+            // buffer += toMove0 - f;
+            // f += toMove0 - f;
+            // }
+            // else {
+            // buffer += 'Z' - buffer;
+            // }
+            // }
+            for (int i = 0; i < toMove0; i++) {
+                if (buffer != 'Z') {
+                    buffer++;
+                } else {
+                    buffer = 'A';
+                }
             }
+            finalString0.append(buffer);
+        }
+        char[] finalArr = finalString0.toString().toCharArray();
+
+        StringBuilder finalString1 = new StringBuilder(2000);
+
+        for (char c : inputArr1) {
+            buffer = c;
+            for (int i = 0; i < toMove1; i++) {
+                if (buffer != 'Z') {
+                    buffer++;
+                } else {
+                    buffer = 'A';
+                }
+            }
+
+            finalString1.append(buffer);
+
         }
 
-        String newIn2 = "";
-        for (char c : in2.toCharArray()) {
-            if (c + val2 > 'Z') {
-                newIn2 += (char) ((c + val2) - 26);
-            } else {
-                newIn2 += (char) (c + val2);
+        int toLook = 0;
+        StringBuilder res = new StringBuilder(2000);
+        int toMove;
+        for (char c : finalArr) {
+            buffer = c;
+            toMove = finalString1.charAt(toLook) - 65;
+            for (int i = 0; i < toMove; i++) {
+                if (buffer != 'Z') {
+                    buffer++;
+
+                } else {
+                    buffer = 'A';
+
+                }
             }
+            res.append(buffer);
+            toLook++;
+
         }
-        System.out.println(newIn1);
-        System.out.println(newIn2);
+        System.out.println(res);
+
         sc.close();
     }
 }

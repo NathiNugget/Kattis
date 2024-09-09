@@ -31,6 +31,7 @@ public class T9spelling {
         hMap.put("x", "99");
         hMap.put("y", "999");
         hMap.put("z", "9999");
+        hMap.put(" ", "0"); 
 
         int i = sc.nextInt(); 
         sc.nextLine(); 
@@ -40,15 +41,22 @@ public class T9spelling {
         }
         sc.close();
 
-        for (int j = 0; j < stringArr.length; j++) {
+        int j = 1; 
+        for (String s : stringArr) {
             StringBuilder sb = new StringBuilder(); 
-            char previous = ' '; 
-            for (char c : stringArr[j].toCharArray()) {
-                if (hMap.get(("" + c)).contains(("" + previous))){
-                    sb.append((" " + hMap.get("" + c))); 
-                } else sb.append(("" + hMap.get(""+c))); 
+            String previous = null; 
+            for (char c : s.toCharArray()){
+                String currentlookupString = hMap.get("" + c).substring(0, 1); 
+                if (currentlookupString.equals(previous)){
+                    sb.append(" " + hMap.get("" + c)); 
+                }
+                else {
+                    sb.append(hMap.get("" + c)); 
+                }
+                previous = currentlookupString; 
             }
-            System.out.println("Case #" + j + ": ");
+            System.out.println("Case #" + j + ": " + sb.toString());
+            j++; 
         }
     }
 }

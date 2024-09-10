@@ -2,27 +2,31 @@ import java.util.Scanner;
 
 public class Upprodun {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in); 
-        int N = sc.nextInt(); 
-        int M = sc.nextInt(); 
-        int totalSpotsTaken = 0; 
-        sc.close();
-        StringBuilder sb = new StringBuilder(); 
-        for (int i = 0; i < N; i++) {
-            sb.setLength(0);
-            int spotsToTake = (int) Math.ceil((double)M/N); 
-            if (totalSpotsTaken + spotsToTake < M){
-                for (int j = 0; j < spotsToTake; j++) {
-                    sb.append("*"); 
-                }
-                totalSpotsTaken += spotsToTake; 
-            } else {
-                for (int j = 0; j < spotsToTake-1; j++) {
-                    sb.append("*"); 
-                }
-                totalSpotsTaken += spotsToTake-1; 
+        Scanner sc = new Scanner(System.in);
+        int rooms = sc.nextInt(); 
+        int teams = sc.nextInt(); 
+        sc.nextLine(); 
+        int remainder = teams%rooms; 
+        if (remainder == 0){
+            for (int i = 0; i < rooms; i++) {
+                System.out.println("*".repeat(teams/rooms));
             }
-            System.out.println(sb.toString());
         }
+        else {
+            int currentRemainder = 0; 
+            int atypicalRooms = teams%rooms; 
+            int normalRooms = rooms - atypicalRooms; 
+            int numberOfStars = (int) Math.floor(teams/rooms); 
+            for (int i = 0; i < atypicalRooms; i++) {
+                System.out.println("*".repeat(numberOfStars+1));
+            }
+            for (int i = 0; i < normalRooms; i++) {
+                System.out.println("*".repeat(numberOfStars));
+            }
+        }
+
+       
+
+        sc.close();
     }
 }

@@ -13,7 +13,6 @@ public class Upprodun {
             }
         }
         else {
-            int currentRemainder = 0; 
             int atypicalRooms = teams%rooms; 
             int normalRooms = rooms - atypicalRooms; 
             int numberOfStars = (int) Math.floor(teams/rooms); 

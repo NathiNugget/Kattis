@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -5,30 +6,58 @@ public class Conformity {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); 
         int frosh = sc.nextInt(); 
-        HashMap<Integer, Integer> courses = new HashMap<>(); 
+        ArrayList<Integer>[] intListArr = new ArrayList[frosh]; 
         for (int i = 0; i < frosh; i++) {
-            int newKey = 0; 
+            intListArr[i] = new ArrayList<>(); 
             for (int j = 0; j < 5; j++) {
-                newKey = sc.nextInt(); 
-                if (!courses.containsKey(newKey)){
-                    courses.put(newKey, 1); 
-                }
-                else {
-                    courses.put(newKey,  courses.get(newKey)+1);
-                }
+                intListArr[i].add(sc.nextInt()); 
             }
-            
+            intListArr[i].sort((x, y) -> {
+                if (x > y) return 1; 
+                if (x < y) return -1; 
+                return 0; 
+            });
         }
 
         int max = 0; 
+        ArrayList<Integer> combinations = new ArrayList<>(); 
+        ArrayList<Integer> localList = new ArrayList<>();
+        int localmax = 0;  
 
-        for (Integer i : courses.values()) {
-            if (max < i){
-                max = i; 
+
+        for (int i = 0; i < intListArr.length; i++) {
+            if (i != 0){
+                if (Equals(intListArr[i], intListArr[i-1])){
+                    if (combinations.size() == 0){
+                        for (Integer integer : intListArr[i]) {
+                            combinations.add(integer); 
+                        }
+                    } else if (max > 2){
+                        if (localList.size() == 0){
+                            for (Integer integer : intListArr[i]) {
+                                localList.add(integer); 
+                                localmax++; 
+                            }
+                        }
+                        else localmax++;    
+                            
+
+                    } 
+
+                } 
             }
         }
-        System.out.println(max);
-        
+
         sc.close();
+    }
+
+    public static boolean Equals(ArrayList<Integer> first, ArrayList<Integer> second){
+        if (first.size() != second.size()) return false;
+            
+            
+        for (int i = 0; i < first.size(); i++) {
+            if (first.get(i) != second.get(i)) return false; 
+        }
+        return true; 
     }
 }

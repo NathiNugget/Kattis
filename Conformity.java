@@ -1,33 +1,48 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Conformity {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); 
-        int frosh = sc.nextInt(); 
-        HashMap<Integer, Integer> courses = new HashMap<>(); 
-        for (int i = 0; i < frosh; i++) {
-            int newKey = 0; 
-            for (int j = 0; j < 5; j++) {
-                newKey = sc.nextInt(); 
-                if (!courses.containsKey(newKey)){
-                    courses.put(newKey, 1); 
-                }
-                else {
-                    courses.put(newKey,  courses.get(newKey)+1);
-                }
-            }
-            
-        }
+        int n = sc.nextInt();
+		List<Integer> line;
+		String frosh;
+		int currentMax = 0, total = 0;
+		HashMap<String, Integer> map = new HashMap<>();
 
-        int max = 0; 
+		for (int i = 0; i < n; i++) { 
+			line = new ArrayList<>();
+			for (int j = 0; j < 5; j++) {
+				line.add(sc.nextInt());
+			}
+			Collections.sort(line);
+			frosh = "";
+			for (Integer number : line) {
+				frosh += Integer.toString(number);
+			}
 
-        for (Integer i : courses.values()) {
-            if (max < i){
-                max = i; 
-            }
-        }
-        System.out.println(max);
+			if (map.containsKey(frosh)) {
+				map.put(frosh, map.get(frosh) + 1);
+			} else {
+				map.put(frosh, 1);
+			}
+
+			if (map.get(frosh) > currentMax) {
+				currentMax = map.get(frosh);
+			}
+		}
+
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			if (entry.getValue() == currentMax) {
+				total += entry.getValue();
+			}
+		}
+
+		System.out.println(total);
         
         sc.close();
     }

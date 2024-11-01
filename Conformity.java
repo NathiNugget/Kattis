@@ -44,6 +44,8 @@ public class Conformity {
 
 		System.out.println(total);
         
-        sc.close();
+        
+
     }
+
 }

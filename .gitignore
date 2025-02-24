@@ -52,6 +52,8 @@ Maeting/obj/Debug/net8.0/Maeting.sourcelink.json
 Maeting/obj/Debug/net8.0/ref/Maeting.dll
 Maeting/obj/Debug/net8.0/refint/Maeting.dll
 .vscode/settings.json
+.vs/
+.vscode/
 
 target/
 .idea/

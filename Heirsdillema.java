@@ -11,7 +11,7 @@ public class Heirsdillema {
                 count++;
         }
         System.out.println(count);
-        System.out.close();
+        sc.close();
     }
 
     public static boolean possible(int combo) {

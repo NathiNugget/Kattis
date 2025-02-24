@@ -12,7 +12,7 @@ public class Knotknowledge {
         for (int i = 0; i < N-1; i++) {
             hMap.put(sc.nextInt(), false); 
         }
-        hMap.forEach((key, value) -> {
+        hMap.forEach((key, _) -> {
             if (hMap.get(key) == true) System.out.println(key); 
         });
         sc.close();

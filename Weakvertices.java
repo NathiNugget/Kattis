@@ -49,7 +49,6 @@ public class Weakvertices {
     }
 
     private static boolean IsStrong(boolean[][] graph, ArrayList<Integer> neighbors, int source) {
-        // TODO Auto-generated method stub
         if (neighbors.size() == 1) return false;
         for (int i = 0; i < graph.length; i++) {
             if (neighbors.contains(i)){

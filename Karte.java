@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -6,7 +5,6 @@ public class Karte {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        int length = input.length();
         sc.close();
         int P = 13;
         int K = 13;
@@ -36,37 +34,10 @@ public class Karte {
             }
         }
 
-        // for (char c : input.toCharArray()) {
-        // if (string.length() < 3){
-        // string += c;
-        // if (string.length() == 3){
-        // if (!cards.contains(string)){
-        // cards.add(string);
-        // if (string.contains("P")){
-        // P--;
-        // }
-        // else if (string.contains("K")){
-        // K--;
-        // }
-        // else if (string.contains("H")){
-        // H--;
-        // }
-        // else if (string.contains("T")){
-        // T--;
-        // }
-        // } else {
-        // System.out.println("GRESKA");
-        // System.exit(0);
-        // }
-        // }
 
-        // } else {
-        // string = "";
-        // string += c;
-        // }
-        // }
         String string = P + " " + K + " " + H + " " + T;
         System.out.println(string.trim());
+        sc.close();
 
     }
 }

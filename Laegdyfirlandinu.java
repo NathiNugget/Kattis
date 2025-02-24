@@ -30,7 +30,6 @@ public class Laegdyfirlandinu {
     }
 
     private static boolean lowPres(int mid, int left, int right, int up, int down) {
-        // TODO Auto-generated method stub
 
         if (mid < left && mid < right && mid < up && mid < down){
             return true; 
